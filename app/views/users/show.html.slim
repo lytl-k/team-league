@@ -1,0 +1,26 @@
+div.container
+  h1
+    | Player
+
+  div.row
+    table.table.striped-table
+      thead
+        th
+          h3 Information
+      tbody
+        tr
+          td
+            strong Name
+          td #{@user.name}
+        tr
+          td
+            strong Surname
+          td #{@user.surname}
+        tr
+          td
+            strong Roles
+          td #{@user.roles.map(&:name).join(', ')}
+  div.row
+    = link_to 'Edit', "/users/#{@user.id}/edit", class: 'btn btn-primary col-md-2'
+    div.col-md-8
+    = link_to 'Back', '/users', class: 'btn btn-primary col-md-2'
