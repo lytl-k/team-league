@@ -1,0 +1,24 @@
+div.container
+
+  h1 Manage Players
+  table.table.table-striped
+    thead
+      th Name
+      th Surname
+      th
+    tbody
+    - @users.each do |player|
+      tr
+        td = player.name
+        td = player.surname
+        td
+          = link_to 'View', "/users/#{player.id}", class: 'btn btn-primary col-md-2'
+          div.col-md-3
+          = link_to 'Edit', "/users/#{player.id}/edit", class: 'btn btn-primary col-md-2'
+          div.col-md-3
+          = link_to 'Delete', "/users/#{player.id}", class: 'btn btn-primary col-md-2', method: :delete
+  = will_paginate @users
+  div.row
+    = link_to 'New Player', '/users/new', class: 'btn btn-primary col-md-3'
+    div.col-md-6
+    = link_to 'Back', '/home', class: 'btn btn-primary col-md-3'
