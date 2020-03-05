@@ -1,0 +1,22 @@
+div.container
+  h1
+    | Team
+
+  div.row
+    table.table.striped-table
+      thead
+        th
+          h3 Information
+      tbody
+        tr
+          td
+            strong Name
+          td #{@team.name}
+        tr
+          td
+            strong Players
+          td #{@team.users.map { |player| "#{player.name} #{player.surname}" }.join(', ')}
+  div.row
+    = link_to 'Edit', "/teams/#{@team.id}/edit", class: 'btn btn-primary col-md-2'
+    div.col-md-8
+    = link_to 'Back', '/teams', class: 'btn btn-primary col-md-2'

@@ -1,0 +1,22 @@
+- provide(:title, "New Team")
+.container
+  h1
+    | New Team
+  - flash[:notice]&.each do |msg|
+    .alert.alert-danger
+      = msg
+  .row
+    .col-md-6.col-md-offset-3
+      = form_for :team, url: { action: :create } do |f|
+        = f.label :name, 'Name'
+        = f.text_field :name, class: 'form-control'
+
+        = f.label :users, 'Players'
+        br
+        = select_tag :users, options_for_select(User.all.map { |user| ["#{user.name} #{user.surname}", user.id]}), multiple: true, size: 20
+
+        div
+          br
+          = f.submit "Create", class: "col-md-3 btn btn-primary"
+          .col-md-6
+          = link_to "Back", '/teams', class: "col-md-3 btn btn-primary"
