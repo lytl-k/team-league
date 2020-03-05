@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @roles = @user.roles
   end
 
   def update
@@ -11,6 +12,8 @@ class UsersController < ApplicationController
 
     user.update(user_params)
     user.update(password_params) unless password_params[:password].blank?
+
+    user.roles = params[:roles].map{ |role_id| Role.find(role_id) }
 
     redirect_to '/users'
   end

@@ -18,6 +18,12 @@
         = f.password_field :password, class: 'form-control'
         = f.label :password_confirmation, 'Confirm Password'
         = f.password_field :password_confirmation, class: 'form-control'
+        br
+        br
+        = f.label :roles, 'Roles'
+        br
+        = select_tag :roles, options_for_select(Role.all.map { |role| [role.name, role.id]}, @roles.map(&:id)), multiple: true, size: 10
+
         div
           br
           = f.submit "Update", class: "col-md-3 btn btn-primary"
