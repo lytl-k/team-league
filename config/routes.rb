@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   get '/tournaments',           to: 'tournaments#index'
   get '/tournaments/new',       to: 'tournaments#new'
+  post '/tournaments/generate',  to: 'tournaments#generate'
   get '/tournaments/:id',       to: 'tournaments#show'
   post '/tournaments',          to: 'tournaments#create'
   get '/tournaments/:id/edit',  to: 'tournaments#edit'
