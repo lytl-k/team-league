@@ -8,6 +8,8 @@
 - A team can only have 1 coordinator
 - After a game has been played, the game cannot be altered
 - After a tournament has started it cannot be altered
+- This during this exercise and the different branches and commits, this app has not yet gone live
+  - This was an assmption made after I realised I didn't think through the entire app and also found a problem with one of the join tables that didn't want to update.
 
 ## Extra things I could have looked at
 
