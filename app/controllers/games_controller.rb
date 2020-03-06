@@ -17,9 +17,9 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     game.update(game_params)
 
-    team1 = Team.find(params[:team1])
-    team2 = Team.find(params[:team2])
-    game.teams = [team1, team2]
+    team1 = Team.find(params[:team1]) unless params[:team1].blank?
+    team2 = Team.find(params[:team2]) unless params[:team2].blank?
+    game.teams = [team1, team2].compact
 
     game.update_team_score(team1, params[:score1].to_i) unless params[:score1].blank?
     game.update_team_score(team2, params[:score2].to_i) unless params[:score2].blank?
@@ -29,8 +29,8 @@ class GamesController < ApplicationController
 
   def create
     game = Game.new(game_params)
-    game.teams << Team.find(params.dig(:game, :team1))
-    game.teams << Team.find(params.dig(:game, :team2))
+    game.teams << Team.find(params.dig(:game, :team1)) unless params.dig(:game, :team1).blank?
+    game.teams << Team.find(params.dig(:game, :team2)) unless params.dig(:game, :team2).blank?
 
     if game.valid?
       game.save
