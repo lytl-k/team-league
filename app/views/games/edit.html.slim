@@ -1,0 +1,46 @@
+- provide(:title, "Edit Game")
+.container
+  h1
+    | Edit Game
+  - flash[:notice]&.each do |msg|
+    .alert.alert-danger
+      = msg
+  .row
+    .col-md-6.col-md-offset-3
+      = form_for :game, method: :patch, url: { action: :update } do |f|
+        = f.label :description, 'Description'
+        = f.text_field :description, class: 'form-control', disabled: @played
+        br
+        table
+          thead
+            th Team 1
+            th Team 2
+          tbody
+            tr
+              td
+                = select_tag :team1, options_from_collection_for_select(Team.all, 'id', 'name', @team1&.id), prompt: 'Choose Team 1', disabled: @played
+              td
+                = select_tag :team2, options_from_collection_for_select(Team.all, 'id', 'name', @team2&.id), prompt: 'Choose Team 2', disabled: @played
+        br
+        = label_tag :score1, 'Team 1 Score'
+        br
+        = text_field_tag :score1, @score1, disabled: @played
+        br
+        br
+        = label_tag :score2, 'Team 2 Score'
+        br
+        = text_field_tag :score2, @score2, disabled: @played
+        br
+        br
+        = f.label :played, 'Played?'
+        br
+        = f.check_box :played, { disabled: @played }, true, false
+
+        - if @played
+          h4.text-danger This game has been played and cannot be altered
+
+        div
+          br
+          = f.submit "Update", class: "col-md-3 btn btn-primary", disabled: @played
+          .col-md-6
+          = link_to "Back", '/games', class: "col-md-3 btn btn-primary"

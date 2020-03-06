@@ -1,0 +1,22 @@
+div.container
+
+  h1 Manage Tournaments
+  table.table.table-striped
+    thead
+      th Description
+      th
+    tbody
+    - @tournaments.each do |tournament|
+      tr
+        td = tournament.description
+        td
+          = link_to 'View', "/tournaments/#{tournament.id}", class: 'btn btn-primary col-md-2'
+          div.col-md-3
+          = link_to 'Edit', "/tournaments/#{tournament.id}/edit", class: 'btn btn-primary col-md-2'
+          div.col-md-3
+          = link_to 'Delete', "/tournaments/#{tournament.id}", class: 'btn btn-primary col-md-2', method: :delete
+  = will_paginate @tournaments
+  div.row
+    = link_to 'New Tournament', '/tournaments/new', class: 'btn btn-primary col-md-3'
+    div.col-md-6
+    = link_to 'Back', '/home', class: 'btn btn-primary col-md-3'
