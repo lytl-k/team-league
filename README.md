@@ -16,3 +16,4 @@
   - By adding a snapshot of the team, scores, etc for a game after it has been played would help with this
   - The same with tournaments after they have started
   - This will also help with information retrieval (you can now pull all the information from a single source instead of relations)
+- Adding a dashboard to the home page where you have a basic view over the up and coming games and the tournaments.
