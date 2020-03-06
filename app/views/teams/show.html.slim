@@ -14,6 +14,10 @@ div.container
           td #{@team.name}
         tr
           td
+            strong Co-ordinator
+          td #{"#{@team.coordinator&.name} #{@team.coordinator&.surname}"}
+        tr
+          td
             strong Players
           td #{@team.users.map { |player| "#{player.name} #{player.surname}" }.join(', ')}
   div.row

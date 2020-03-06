@@ -11,14 +11,17 @@ class TeamsController < ApplicationController
     team = Team.find(params[:id])
     team.update(team_params)
 
-    team.users = params[:users].map { |user_id| User.find(user_id) }
+    team.users = params[:users].map { |user_id| User.find(user_id) } if params[:users]
 
     redirect_to '/teams'
   end
 
   def create
     team = Team.new(team_params)
-    team.users = params[:users].map { |user_id| User.find(user_id) }
+    if params[:users]
+      team.users = params[:users].map { |user_id| User.find(user_id) }
+      team.coordinator_id = team.users.first.id
+    end
 
     if team.valid?
       team.save
@@ -58,6 +61,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :coordinator_id)
   end
 end

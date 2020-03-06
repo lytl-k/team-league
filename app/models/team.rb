@@ -7,6 +7,6 @@ class Team < ApplicationRecord
   validates :name, presence: true
 
   def coordinator
-    User.find(coordinator_id)
+    User.find(coordinator_id) if coordinator_id
   end
 end

@@ -14,6 +14,13 @@
         = f.label :users, 'Players'
         br
         = select_tag :users, options_for_select(User.all.map { |user| ["#{user.name} #{user.surname}", user.id]}, @players.map(&:id)), multiple: true, size: 20
+        br
+
+        = f.label :coordinator_id, 'Co-ordinator'
+        - unless @players.empty?
+          = f.select  :coordinator_id, options_for_select(@players.map { |user| ["#{user.name} #{user.surname}", user.id]}, @team.coordinator_id), prompt: 'Please choose a coordinator'
+        - else
+          h5.text-warning No players have been added into the team, so coordinator cannot be selected
 
         div
           br
