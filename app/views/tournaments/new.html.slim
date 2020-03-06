@@ -1,0 +1,22 @@
+- provide(:title, "New Tournament")
+.container
+  h1
+    | New Tournament
+  - flash[:notice]&.each do |msg|
+    .alert.alert-danger
+      = msg
+  .row
+    .col-md-6.col-md-offset-3
+      = form_for :tournament, url: { action: :create } do |f|
+        = f.label :description, 'Description'
+        = f.text_field :description, class: 'form-control'
+
+        = f.label :games, 'Players'
+        br
+        = select_tag :games, options_for_select(Game.all.map { |game| [game.description, game.id]}), multiple: true, size: 20
+
+        div
+          br
+          = f.submit "Create", class: "col-md-3 btn btn-primary"
+          .col-md-6
+          = link_to "Back", '/teams', class: "col-md-3 btn btn-primary"

@@ -1,0 +1,38 @@
+div.container
+  h1
+    | Game
+
+  div.row
+    table.table.striped-table
+      thead
+        th
+          h3 Information
+      tbody
+        tr
+          td
+            strong Description
+          td #{@game.description}
+        tr
+          td
+            strong Team 1
+          td
+            | #{@game.teams.first&.name}
+        tr
+          td
+            strong Score
+          td
+            | #{@game.score_for_team @game.teams.first}
+        tr
+          td
+            strong Team 2
+          td
+            | #{@game.teams.last&.name}
+        tr
+          td
+            strong Score
+          td
+            | #{@game.score_for_team @game.teams.last}
+  div.row
+    = link_to 'Edit', "/games/#{@game.id}/edit", class: 'btn btn-primary col-md-2'
+    div.col-md-8
+    = link_to 'Back', '/games', class: 'btn btn-primary col-md-2'

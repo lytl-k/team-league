@@ -1,0 +1,29 @@
+- provide(:title, "Edit Tournament")
+.container
+  h1
+    | Edit Tournament
+  - flash[:notice]&.each do |msg|
+    .alert.alert-danger
+      = msg
+  .row
+    .col-md-6.col-md-offset-3
+      = form_for :tournament, method: :patch, url: { action: :update } do |f|
+        = f.label :description, 'Description'
+        = f.text_field :description, class: 'form-control', disabled: @started
+
+        = f.label :games, 'Games'
+        br
+        - if @started
+          = select_tag :games, options_for_select(@games.map { |game| [game.description, game.id] }, @games.map(&:id)), multiple: true, size: @games.count, disabled: true
+        - else
+          = select_tag :games, options_for_select(Game.all.map { |game| [game.description, game.id] unless game.played? }.compact, @games.map(&:id)), multiple: true, size: 20
+        br
+        = f.label :started, 'Started?'
+        br
+        = f.check_box :started, { disabled: @started }, true, false
+
+        div
+          br
+          = f.submit "Update", class: "col-md-3 btn btn-primary", disabled: @started
+          .col-md-6
+          = link_to "Back", '/tournaments', class: "col-md-3 btn btn-primary"

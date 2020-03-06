@@ -1,0 +1,25 @@
+div.container
+  h1
+    | Tournament
+
+  div.row
+    table.table.striped-table
+      thead
+        th
+          h3 Information
+      tbody
+        tr
+          td
+            strong Description
+          td #{@tournament.description}
+        - @tournament.games.each_with_index do |game, index|
+          tr
+            td
+              strong
+                | Game #{index + 1}
+                td
+                  | #{game.description}
+  div.row
+    = link_to 'Edit', "/tournaments/#{@tournament.id}/edit", class: 'btn btn-primary col-md-2'
+    div.col-md-8
+    = link_to 'Back', '/tournaments', class: 'btn btn-primary col-md-2'
