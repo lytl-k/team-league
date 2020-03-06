@@ -1,4 +1,6 @@
 class TournamentsController < ApplicationController
+  include TournamentsHelper
+
   def new
   end
 
@@ -55,6 +57,15 @@ class TournamentsController < ApplicationController
       format.html # edit.html.erb
       format.json { render json: @tournament.attributes }
     end
+  end
+
+  def generate
+    teams = Team.all
+    teams = teams.shuffle[0..-2] if teams.count % 2 != 0
+
+    tournament_from_teams!(teams)
+
+    redirect_to '/tournaments'
   end
 
   private
