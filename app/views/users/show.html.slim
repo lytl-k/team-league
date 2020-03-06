@@ -18,6 +18,10 @@ div.container
           td #{@user.surname}
         tr
           td
+            strong Email
+          td #{@user.email}
+        tr
+          td
             strong Roles
           td #{@user.roles.map(&:name).join(', ')}
   div.row

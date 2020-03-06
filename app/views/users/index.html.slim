@@ -5,12 +5,14 @@ div.container
     thead
       th Name
       th Surname
+      th Email
       th
     tbody
     - @users.each do |player|
       tr
         td = player.name
         td = player.surname
+        td = player.email
         td
           = link_to 'View', "/users/#{player.id}", class: 'btn btn-primary col-md-2'
           div.col-md-3
