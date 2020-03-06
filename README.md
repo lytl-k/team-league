@@ -19,3 +19,6 @@
   - The same with tournaments after they have started
   - This will also help with information retrieval (you can now pull all the information from a single source instead of relations)
 - Adding a dashboard to the home page where you have a basic view over the up and coming games and the tournaments.
+- Adding player specific information in the dashboard above, this will give players a reason to actually log in...
+- Alias `user(s)` as `player(s)`
+  - Yeah, got all miced and matched throughout the code with payers and users... Really unprofessional!
