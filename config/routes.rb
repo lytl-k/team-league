@@ -38,4 +38,6 @@ Rails.application.routes.draw do
   get '/tournaments/:id/edit',  to: 'tournaments#edit'
   patch '/tournaments/:id',     to: 'tournaments#update'
   delete '/tournaments/:id',    to: 'tournaments#delete'
+
+  post 'logout',                to: 'home#logout'
 end
