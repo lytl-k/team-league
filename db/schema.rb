@@ -14,13 +14,14 @@ ActiveRecord::Schema.define(version: 2020_03_04_093749) do
 
   create_table "games", force: :cascade do |t|
     t.string "description"
+    t.boolean "played", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "games_teams", id: false, force: :cascade do |t|
-    t.integer "team_id", null: false
-    t.integer "game_id", null: false
+  create_table "games_teams", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "game_id"
     t.integer "score"
   end
 
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_093749) do
 
   create_table "tournaments", force: :cascade do |t|
     t.string "description", null: false
+    t.boolean "started", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
