@@ -4,13 +4,6 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
-    @team1 = @game.teams.first
-    @team2 = @game.teams.last
-
-    @score1 = @game.score_for_team @team1
-    @score2 = @game.score_for_team @team2
-
-    @played = @game.played?
   end
 
   def update

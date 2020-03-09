@@ -17,4 +17,26 @@ class Game < ApplicationRecord
   def played?
     played
   end
+
+  def team1
+    teams.first
+  end
+
+  def team2
+    teams.last
+  end
+
+  def score1
+    score_for_team team1
+  end
+
+  def score2
+    score_for_team team2
+  end
+
+  def winner
+    return nil unless score1 and score2
+    return 'Draw' if score1 == score2
+    score1 > score2 ? team1.name : team2.name
+  end
 end
