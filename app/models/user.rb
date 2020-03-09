@@ -17,4 +17,12 @@ class User < ApplicationRecord
                         uniqueness: { case_sensitive: false }
 
   has_secure_password
+
+  def games
+    teams.map(&:games).flatten
+  end
+
+  def tournaments
+    teams.map(&:games).flatten.map(&:tournaments).flatten.uniq
+  end
 end

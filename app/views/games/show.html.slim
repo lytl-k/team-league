@@ -32,6 +32,9 @@ div.container
             strong Score
           td
             | #{@game.score_for_team @game.teams.last}
+
+    h3.text-success
+      | Winner: #{@game.winner || 'To be decided...'}
   div.row
     = link_to 'Edit', "/games/#{@game.id}/edit", class: 'btn btn-primary col-md-2'
     div.col-md-8

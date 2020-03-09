@@ -9,7 +9,7 @@
     .col-md-6.col-md-offset-3
       = form_for :game, method: :patch, url: { action: :update } do |f|
         = f.label :description, 'Description'
-        = f.text_field :description, class: 'form-control', disabled: @played
+        = f.text_field :description, class: 'form-control', disabled: @game.played?
         br
         table
           thead
@@ -18,29 +18,29 @@
           tbody
             tr
               td
-                = select_tag :team1, options_from_collection_for_select(Team.all, 'id', 'name', @team1&.id), prompt: 'Choose Team 1', disabled: @played
+                = select_tag :team1, options_from_collection_for_select(Team.all, 'id', 'name', @game.team1&.id), prompt: 'Choose Team 1', disabled: @game.played?
               td
-                = select_tag :team2, options_from_collection_for_select(Team.all, 'id', 'name', @team2&.id), prompt: 'Choose Team 2', disabled: @played
+                = select_tag :team2, options_from_collection_for_select(Team.all, 'id', 'name', @game.team2&.id), prompt: 'Choose Team 2', disabled: @game.played?
         br
         = label_tag :score1, 'Team 1 Score'
         br
-        = text_field_tag :score1, @score1, disabled: @played
+        = text_field_tag :score1, @game.score1, disabled: @game.played?
         br
         br
         = label_tag :score2, 'Team 2 Score'
         br
-        = text_field_tag :score2, @score2, disabled: @played
+        = text_field_tag :score2, @game.score2, disabled: @game.played?
         br
         br
         = f.label :played, 'Played?'
         br
-        = f.check_box :played, { disabled: @played }, true, false
+        = f.check_box :played, { disabled: @game.played? }, true, false
 
-        - if @played
+        - if @game.played?
           h4.text-danger This game has been played and cannot be altered
 
         div
           br
-          = f.submit "Update", class: "col-md-3 btn btn-primary", disabled: @played
+          = f.submit "Update", class: "col-md-3 btn btn-primary", disabled: @game.played?
           .col-md-6
           = link_to "Back", '/games', class: "col-md-3 btn btn-primary"

@@ -10,3 +10,54 @@
       = link_to 'Manage Games', '/games', class: 'btn btn-primary'
       = link_to 'Manage Tournaments', '/tournaments', class: 'btn btn-primary'
     = link_to 'Logout', '/logout', class: 'btn btn-warning col-md-offset-5', method: :post
+
+
+  - if @player
+    div.row
+      h2
+        | Player Games
+      h3
+        | Upcoming Games
+      table
+        thead
+          th Description
+        tbody
+          - @user.games.select { |g| !g.played? }.compact.each do |game|
+            tr
+              td
+                | #{game.description}
+
+      h3
+        | Already Played
+      table
+        thead
+          th Description
+        tbody
+          - @user.games.select { |g| g.played? }.compact.each do |game|
+            tr
+              td
+                | #{game.description}
+
+      h2
+        | Player Tournaments
+      h3
+        | Upcoming Tournaments
+      table
+        thead
+          th Description
+        tbody
+          - @user.tournaments.select { |t| !t.started? }.compact.each do |tournament|
+            tr
+              td
+                | #{tournament.description}
+
+      h3
+        | Already Started
+      table
+        thead
+          th Description
+        tbody
+          - @user.tournaments.select { |t| t.started? }.compact.each do |tournament|
+            tr
+              td
+                | #{tournament.description}
