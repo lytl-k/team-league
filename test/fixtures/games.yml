@@ -5,12 +5,25 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {
-  description: 'This is game one'
-}
-# column: value
-#
-two: {
-  description: 'This is game two'
+  id: 1,
+  description: 'This is game one',
+  played: true
 }
 
-# column: value
+two: {
+  id: 2,
+  description: 'This is game two',
+  played: false
+}
+
+three: {
+  id: 3,
+  description: 'This is game three',
+  played: false
+}
+
+four: {
+  id: 4,
+  description: 'This is game four',
+  played: true
+}

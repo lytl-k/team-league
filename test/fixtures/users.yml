@@ -5,15 +5,121 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {
+  id: 1,
   name: User,
   surname: One,
   email: user.one@email.com
 }
-# column: value
-#
+
 two: {
+  id: 2,
   name: User,
   surname: Two,
   email: user.two@email.com
 }
-# column: value
+
+three: {
+  id: 3,
+  name: User,
+  surname: Three,
+  email: user.three@email.com
+}
+
+four: {
+  id: 4,
+  name: User,
+  surname: Four,
+  email: user.four@email.com
+}
+
+five: {
+  id: 5,
+  name: User,
+  surname: Five,
+  email: user.five@email.com
+}
+
+six: {
+  id: 6,
+  name: User,
+  surname: Six,
+  email: user.six@email.com
+}
+
+seven: {
+  id: 7,
+  name: User,
+  surname: Seven,
+  email: user.seven@email.com
+}
+
+eight: {
+  id: 8,
+  name: User,
+  surname: Eight,
+  email: user.eight@email.com
+}
+
+nine: {
+  id: 9,
+  name: User,
+  surname: Nine,
+  email: user.nine@email.com
+}
+
+ten: {
+  id: 10,
+  name: User,
+  surname: Ten,
+  email: user.ten@email.com
+}
+
+eleven: {
+  id: 11,
+  name: User,
+  surname: Eleven,
+  email: user.eleven@email.com
+}
+
+twelve: {
+  id: 12,
+  name: User,
+  surname: Twelve,
+  email: user.twelve@email.com
+}
+
+thirteen: {
+  id: 13,
+  name: User,
+  surname: Thirteen,
+  email: user.thirteen@email.com
+}
+
+fourteen: {
+  id: 14,
+  name: User,
+  surname: Fourteen,
+  email: user.fourteen@email.com
+}
+
+fifteen: {
+  id: 15,
+  name: User,
+  surname: Fifteen,
+  email: user.fifteen@email.com
+}
+
+sixteen: {
+  id: 16,
+  name: User,
+  surname: Sixteen,
+  email: user.sixteen@email.com
+}
+
+seventeen: {
+  id: 17,
+  name: Epic,
+  surname: User,
+  email: epic_user@team.com,
+  password_digest: <%= BCrypt::Password.create("test_password", cost: 10) %>
+}
