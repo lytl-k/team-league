@@ -20,4 +20,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get '/users'
     assert_response :success
   end
+
+  test "should post create" do
+    post '/users', params: { user: {name: 'test', surname: 'user', email: 'test.user@email.com' }}
+    assert_response :redirect
+  end
+
+  test "should patch update" do
+    patch '/users/1', params: { user: {name: 'test', surname: 'update' }}
+    assert_response :redirect
+  end
+
+  test "should delete a user" do
+    delete '/users/2'
+    assert_response :redirect
+  end
 end

@@ -15,14 +15,14 @@ class TournamentsController < ApplicationController
     tournament = Tournament.find(params[:id])
     tournament.update(tournament_params)
 
-    tournament.games = params[:games].map { |game_id| Game.find(game_id) }
+    tournament.games = params[:games].map { |game_id| Game.find(game_id) } if params[:games]
 
     redirect_to '/tournaments'
   end
 
   def create
     tournament = Tournament.new(tournament_params)
-    tournament.games = params[:games].map { |game_id| Game.find(game_id) }
+    tournament.games = params[:games].map { |game_id| Game.find(game_id) } if params[:games]
 
     if tournament.valid?
       tournament.save

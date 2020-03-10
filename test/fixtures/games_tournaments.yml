@@ -3,7 +3,23 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-# column: value
-#
-# column: value
+
+one: {
+  game_id: 1,
+  tournament_id: 1
+}
+
+two: {
+  game_id: 2,
+  tournament_id: 1
+}
+
+three: {
+  game_id: 3,
+  tournament_id: 1
+}
+
+four: {
+  game_id: 4,
+  tournament_id: 1
+}

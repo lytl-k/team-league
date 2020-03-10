@@ -5,11 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {
-  name: role
+  id: 1,
+  name: league_master
 }
 # column: value
 #
 two: {
-  name: role2
+  id: 2,
+  name: player
 }
 # column: value

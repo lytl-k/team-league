@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     user.update(user_params)
     user.update(password_params) unless password_params[:password].blank?
 
-    user.roles = params[:roles].map{ |role_id| Role.find(role_id) }
+    user.roles = params[:roles].map{ |role_id| Role.find(role_id) } if params[:roles]
 
     redirect_to '/users'
   end
