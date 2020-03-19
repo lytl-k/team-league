@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :users
   resources :teams
   resources :games
-  resources :tournaments
-  post '/tournaments/generate', to: 'tournaments#generate'
+  resources :tournaments do
+    post :generate, on: :collection
+  end
 
   post 'logout',                to: 'home#logout'
 end
