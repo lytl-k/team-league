@@ -35,7 +35,7 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     Tournament.find_by_id(params[:id]).delete
 
     redirect_to '/tournaments'

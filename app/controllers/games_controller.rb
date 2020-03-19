@@ -36,7 +36,7 @@ class GamesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     Game.find_by_id(params[:id]).delete
 
     redirect_to '/games'
